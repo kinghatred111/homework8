@@ -124,11 +124,14 @@ def main():  # основной модуль с которого начинае�
                 continue
             change_row(filename)
         elif command == "p":
-            if not exists(filename):
-                print("Файл не существует. Создайте его.")
-                continue
             source_file = input("Укажате файл с которого надо перенести строку: ")
+            if not exists(source_file):
+                print("Файл не существует.")
+            continue
             destination_file = input("Укажате файл в который нужно перенести строку: ")
+            if not exists(destination_file):
+                print("Файл не существует.")
+            continue
             line_number_to_read = int(input("Укажате номер строки для копирования:  "))
             line_number_to_replace = int(input("Укажате номер строки для замены:  "))
             copy_line(source_file, line_number_to_read, destination_file, line_number_to_replace)
